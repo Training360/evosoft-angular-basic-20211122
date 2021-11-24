@@ -1,1 +1,17 @@
-<p>user-editor works!</p>
+<div class="row">
+  <div *ngIf="user$ | async as user" class="col-6 offset-3">
+    <form>
+      <ng-container *ngFor="let col of cols">
+        <div [hidden]="col.hidden" class="form-group">
+          <label>{{ col.title }}</label>
+          <input
+            [(ngModel)]="user[col.key]"
+            [name]="col.key"
+            class="form-control"
+            type="text"
+            [disabled]="col.disabled || false">
+        </div>
+      </ng-container>
+    </form>
+  </div>
+</div>
