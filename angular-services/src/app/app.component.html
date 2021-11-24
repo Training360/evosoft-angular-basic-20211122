@@ -1,0 +1,46 @@
+<app-navigation></app-navigation>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-2 offset-6 mt-3">
+      <select [(ngModel)]="keyPhrase" class="form-control">
+        <option *ngFor="let keyItem of keyList" [value]="keyItem.key">
+          {{ keyItem.title }}
+        </option>
+      </select>
+    </div>
+    <div class="col-4 mb-3 mt-3">
+      <input [(ngModel)]="phrase" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of list$ | async | filter:phrase:keyPhrase">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name | lowercase }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.category }}</td>
+            <td>
+              <div class="btn-group">
+                <button (click)="onDelete(product)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
