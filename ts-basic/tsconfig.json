@@ -1,0 +1,10 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "removeComments": true,
+        "sourceMap": true,
+        "sourceRoot": "basic.ts",
+        "watch": true,
+        "module": "ES2015"
+    }
+}
