@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <th *ngFor="let col of columns">
+          {{ col.title }}
+        </th>
+        <th></th>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of userList$ | async">
+          <td *ngFor="let col of columns">
+            {{ user[col.key] }}
+          </td>
+          <td>
+            <div class="btn-group">
+              <button routerLink="/user-editor/{{user.id}}" class="btn btn-info">
+                <i class="fa fa-pencil"></i>
+              </button>
+              <button (click)="onDelete(user)" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>
