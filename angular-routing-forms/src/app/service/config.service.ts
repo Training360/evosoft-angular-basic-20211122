@@ -5,6 +5,8 @@ export interface ITableColumn {
   title: string;
   disabled?: boolean;
   hidden?: boolean;
+  type?: string;
+  options?: {title: string, value: any}[];
 }
 
 @Injectable({
@@ -16,7 +18,13 @@ export class ConfigService {
     {key: 'id', title: '#', hidden: true, disabled: true},
     {key: 'name', title: 'Name'},
     {key: 'email', title: 'Email'},
-    {key: 'category', title: 'Cat.'},
+    {key: 'category', title: 'Cat.', type: 'select',
+      options: [
+        {title: 'Guest', value: 'Guest'},
+        {title: 'Editor', value: 'Editor'},
+        {title: 'Admin', value: 'Admin'},
+      ],
+    },
   ];
 
   constructor() { }

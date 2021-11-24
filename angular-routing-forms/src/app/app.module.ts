@@ -9,6 +9,7 @@ import { HomeComponent } from './page/home/home.component';
 import { UsersComponent } from './page/users/users.component';
 import { UserEditorComponent } from './page/user-editor/user-editor.component';
 import { NavigationComponent } from './common/navigation/navigation.component';
+import { FormGroupComponent } from './common/form-group/form-group.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavigationComponent } from './common/navigation/navigation.component';
     HomeComponent,
     UsersComponent,
     UserEditorComponent,
-    NavigationComponent
+    NavigationComponent,
+    FormGroupComponent
   ],
   imports: [
     BrowserModule,

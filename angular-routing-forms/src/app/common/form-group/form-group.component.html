@@ -1,0 +1,30 @@
+<div [hidden]="col.hidden" class="form-group">
+  <label>{{ col.title }}</label>
+  <div [ngSwitch]="col.type">
+    <select
+      *ngSwitchCase="'select'"
+      #mainInput="ngModel"
+      [(ngModel)]="entity[col.key]"
+      [name]="col.key"
+      class="form-control"
+      [disabled]="col.disabled || false"
+      required>
+        <option *ngFor="let option of col.options" [value]="option.value">
+          {{ option.title }}
+        </option>
+    </select>
+    <input
+      *ngSwitchDefault
+      #mainInput="ngModel"
+      [(ngModel)]="entity[col.key]"
+      [name]="col.key"
+      class="form-control"
+      type="text"
+      [disabled]="col.disabled || false"
+      required>
+
+    </div>
+    <div [hidden]="checkValidity()" class="error-message">
+      This input is required.
+    </div>
+</div>
