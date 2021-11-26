@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable, single, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -26,11 +26,12 @@ export class BaseService<T extends {id: number}> {
     return this.http.get<T>(`${this.apiUrl}${this.entityName}/${id}`);
   }
 
-  create(entity: T): Observable<T> {
-    return this.http.post<T>(
+  async create(entity: T) {
+    await firstValueFrom(this.http.post<T>(
       `${this.apiUrl}${this.entityName}`,
       entity
-    );
+    ));
+    this.getAll();
   }
 
   update(entity: T): Observable<T> {
